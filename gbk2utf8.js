@@ -1,10 +1,17 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * 将一个目录里的文件，拷贝到另一个目录里，并将指定后缀的文件，从gbk转换到utf8
  */
 
-var program = require('commander');
+var program = require('commander')
+  , fs = require('fs')
+  , async = require('async')
+  , glob = require('glob')
+  , join = require('path').join
+  , mkdirp = require('mkdirp')
+  , Emitter = require('events').EventEmitter
+
 
 program
   .version('0.0.1')
@@ -12,7 +19,6 @@ program
   .option('-t, --targetDir', 'target utf8 dir')
   .option('-e, --ext', 'java,html,php,txt,js')
   .option('-i, --info','copy dir from --fromDir to --targetDir, and convert --ext file to utf8')
-  //.option('-, --cheese [type]', 'Add the specified type of cheese [marble]', 'marble')
   .parse(process.argv);
 
 if (!program.args.length) program.help();
