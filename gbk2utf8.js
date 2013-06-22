@@ -15,13 +15,13 @@ var program = require('commander')
 
 program
   .version('0.0.1')
-  .option('-f, --fromDir', 'from gbk dir')
-  .option('-t, --targetDir', 'target utf8 dir')
+  .option('-f, --fromDir <path>', 'from gbk dir')
+  .option('-t, --targetDir <path>', 'target utf8 dir')
   .option('-e, --ext', 'java,html,php,txt,js')
   .option('-i, --info','copy dir from --fromDir to --targetDir, and convert --ext file to utf8')
   .parse(process.argv);
 
-if (!program.args.length) program.help();
+console.log(program);
 
 if (null==program.fromDir) {
   program.help();
@@ -31,5 +31,12 @@ if (null==program.targetDir) {
   program.help();
 }
 
+console.log(program);
+
+
+glob('**/*', { cwd: program.fromDir, dot: true, mark: true }, function (err, paths) {
+  console.log(paths);
+
+});
 
 
