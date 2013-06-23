@@ -2,6 +2,9 @@
 
 /**
  * 将一个目录里的文件，拷贝到另一个目录里，并将指定后缀的文件，从gbk转换到utf8
+ * https://github.com/bengourley/node-directory-copy/blob/master/directory-copy.js
+ * https://github.com/visionmedia/commander.js/tree/master/examples
+ * https://github.com/isaacs/node-glob
  */
 
 var program = require('commander')
